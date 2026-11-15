@@ -45,6 +45,17 @@ RTX PRO 6000 (int8, 6 steps, power limit 600 W), same prompt and seed:
 3. In your workflow, replace **MiniMax H3 Image Conditioning** with **✦ AXIRIS · H3 Image Soft Start** — or open
    `workflows/MiniMax H3 Image - text to image (Soft Start).json` (the official template, with this node).
 
+## Models
+
+The node uses ComfyUI's own MiniMax H3 Image models (the example workflow also offers to download them):
+
+| File | Folder | Link |
+|---|---|---|
+| `minimax_h3_image_pruned_int8_convrot.safetensors` (21 GB) | `models/diffusion_models/` | [Hugging Face](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) |
+| `qwen3vl_32b_minimax_h3_int8_convrot.safetensors` (25.3 GB) | `models/text_encoders/` | [Hugging Face](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) |
+| `minimax_h3_image_vae_fp16.safetensors` (1.2 GB) | `models/vae/` | [Hugging Face](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors) |
+| `qwen3.5_9b_w4a8_gptq.safetensors` (7.3 GB, only for the prompt expander of the official template) | `models/text_encoders/` | [Hugging Face](https://huggingface.co/Comfy-Org/Qwen3.5/resolve/main/text_encoders/qwen3.5_9b_w4a8_gptq.safetensors) |
+
 ## Nodes
 
 | Node | What it does |
@@ -70,6 +81,12 @@ seul. Pas de VAE. Avec de vraies images de référence (un edit), le node est le
 
 **Plus haut que 16 MP.** Jusqu'à 16 384 px de côté. Mesuré sur une RTX PRO 6000 (int8, 6 pas, 600 W) : 16 MP en 22 s,
 32 MP en 41 s, 64 MP en 104 s.
+
+**Modèles.** Ceux de ComfyUI pour MiniMax H3 Image (le workflow d'exemple propose aussi de les télécharger) :
+[le modèle int8](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/diffusion_models/minimax_h3_image_pruned_int8_convrot.safetensors) dans `models/diffusion_models/`,
+[l'encodeur de texte](https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors) dans `models/text_encoders/`,
+[le VAE](https://huggingface.co/Comfy-Org/MiniMax-H3-Image/resolve/main/vae/minimax_h3_image_vae_fp16.safetensors) dans `models/vae/`,
+et [le Qwen 3.5 9B](https://huggingface.co/Comfy-Org/Qwen3.5/resolve/main/text_encoders/qwen3.5_9b_w4a8_gptq.safetensors) dans `models/text_encoders/`, seulement pour le développeur de prompt du template officiel.
 
 **Installer.** Dans `ComfyUI/custom_nodes/` : `git clone https://github.com/Axiris/ComfyUI-AXIRIS-H3-Image-Soft-Start`, redémarrer ComfyUI (0.45 ou plus), remplacer le node
 d'origine par **✦ AXIRIS · H3 Image Soft Start**, ou ouvrir le workflow du dossier `workflows/`.
